@@ -4,7 +4,8 @@ exec { "apt-update":
 
 
 exec { "musicjungle":
-  command => "mysqladmin -uroot create musicjungle",
+    command => "mysqladmin -uroot create musicjungle",
+    unless => "mysql -u root musicjungle",
 	path => "/usr/bin",
 	require => Service["mysql"]
 }
